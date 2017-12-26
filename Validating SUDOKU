@@ -1,0 +1,39 @@
+#include<stdio.h>
+#include<stdbool.h>
+bool validateSudoku(int s[9][9])
+{
+int i,j,a[9],b[9],k,l;
+  for(i=0;i<9;i++)
+  {
+    for(j=0;j<9;j++)
+    {
+      a[j]=s[i][j];
+      b[j]=s[j][i];
+    }
+    for(k=0,l=8;k<9 && l>=0;k++,l--)
+    {
+      if(a[k] == a[l] && k!=l)
+        return false;
+      if(b[k] == b[l] && k!=l)
+        return false;
+    }
+  }
+  int c=0,r=0;
+  for(c=0;c<9;c=c+3)
+  {
+    for(r=0;r<9;r=r+3)
+    {
+    int sum=0;
+  for(i=c;i<c+3;i++)
+  {
+    for(j=r;j<r+3;j++)
+    {
+      sum+=s[i][j];
+    }
+  }
+        if(sum != 45)
+      return false;
+  }
+  }
+  return true;
+}
