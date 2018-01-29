@@ -1,0 +1,9 @@
+#include<stdio.h>
+#include<stdbool.h>
+
+bool isDivisibleBy8(int n)
+{
+if((1 &n>>1)==1 ||(1 & n>>2)==1 || (n &1)==1)
+  return false;
+return true;
+}
