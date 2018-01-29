@@ -1,0 +1,20 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#include <iostream>
+using namespace std;
+struct LLNode{
+  int data;
+  struct LLNode *next;
+};
+
+LLNode *reverseList(LLNode *h)
+{
+struct LLNode *rh;
+  if(h==NULL || h->next==NULL)
+    return h;
+  rh=reverseList(h->next);
+  h->next->next=h;
+  h->next=NULL;
+  return rh;
+}
