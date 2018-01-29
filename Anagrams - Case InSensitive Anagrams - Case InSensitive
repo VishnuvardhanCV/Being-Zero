@@ -1,0 +1,24 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+bool areAnagrams(char first[], char second[])
+{
+  int i,j,l1=strlen(first),l2=strlen(second),a[26]={0};
+  if(l1!=l2)
+    return false;
+    for(i=0;i<l1;i++){
+    second[i]=(char)toupper(second[i]);
+    first[i]=(char)toupper(first[i]);
+  }
+  for(i=0;i<l1;i++)
+  {
+    a[first[i]-'A']++;
+    a[second[i]-'A']--;
+  }
+  for(j=0;j<26;j++)
+  {
+    if(a[j]!=0)
+    	return false;
+  }
+    return true;
+}
