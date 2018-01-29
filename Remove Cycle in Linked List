@@ -1,0 +1,41 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#include <iostream>
+using namespace std;
+struct LLNode{
+  int data;
+  struct LLNode *next;
+};
+void removeLoop(LLNode *loop_node,LLNode *head)
+{
+   LLNode *ptr1,*ptr2;
+   ptr1 = head;
+   while (1)
+   {
+     ptr2 = loop_node;
+     while (ptr2->next != loop_node && ptr2->next != ptr1)
+         ptr2 = ptr2->next;
+     if (ptr2->next == ptr1)
+        break;
+     ptr1 = ptr1->next;
+   }
+   ptr2->next = NULL;
+}
+
+void removeCycle(LLNode *h)
+{
+  LLNode  *slow_p = h, *fast_p = h;
+ 
+    while (slow_p && fast_p && fast_p->next)
+    {
+        slow_p = slow_p->next;
+        fast_p  = fast_p->next->next;
+        if (slow_p == fast_p)
+        {
+            removeLoop(slow_p,h);
+            return;
+        }
+    }
+    // Your Code Here
+}
