@@ -1,0 +1,26 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#include <iostream>
+using namespace std;
+struct LLNode{
+  int data;
+  struct LLNode *next;
+};
+
+LLNode *mergeSorted(LLNode *h1, LLNode *h2)
+{
+if(h1==NULL) return h2;
+if(h2==NULL) return h1;
+  if(h1->data < h2->data)
+  {
+    h1->next=mergeSorted(h1->next,h2);
+    return h1;
+  }
+  else
+      {
+    h2->next=mergeSorted(h1,h2->next);
+    return h2;
+  }
+
+}
