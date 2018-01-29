@@ -1,0 +1,40 @@
+#include<stdio.h>
+#define ROWS 100
+#define COLS 100
+
+bool validateMagicSq(int ms[ROWS][COLS], int n)
+{
+int i,j,k=0,s[(2*n)+2],r=0,c=0,d1=0,d2=0;
+  for(i=0;i<n;i++)
+  {
+    for(j=0;j<n;j++)
+    {
+      r+=ms[i][j];
+      c+=ms[j][i];
+      if(i==j)
+        d1+=ms[i][j];
+    }
+      s[k]=r;
+      k++;
+      s[k]=c;
+      k++; 
+    if(r != c)
+      return false;
+  }
+  s[k]=d1;
+  k++;
+  for(i=0,j=n-1;i<n && j>=0;i++,j--)
+  {
+    d2+=ms[i][j];
+  }
+  s[k]=d2;
+  int sum=0;
+  for(i=0;i<(2*n)+2;i++)
+  {
+    sum+=s[i];
+  }
+  if(sum%d2 != 0)
+    return false;
+  else
+    return true;
+}
