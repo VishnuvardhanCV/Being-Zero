@@ -1,0 +1,19 @@
+#include<stdio.h>
+int howLongPeppermintsLast(int p, int w)
+{
+  int s=(p+w)/7;
+  int r=(p+w)%7;
+  if(s>=7)
+     return p+howLongPeppermintsLast(s,r);
+  return p+s;
+}
+int main()
+{
+  	int t, p, w;
+  	scanf("%d", &t);
+  	while(t--){
+      	scanf("%d %d", &p, &w);
+		printf("%d\n",howLongPeppermintsLast(p, w));
+    }
+	return 0;
+}
